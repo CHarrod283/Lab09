@@ -1,0 +1,37 @@
+<html>
+	<title>Shop</title>
+	<head>Buy from the store</head>
+	
+	<body>
+		<script type="text/javascript"
+            src="formChecker.js">
+        </script>
+		<form action="customerBackend.php" method="post" onsubmit="return validate();">
+			
+			<label for="numBlanket">$5.00 Blanket<br>Quantity: </label>
+			<input type="number" id="numBlanket"><br><br>
+			<label for="numFork">$2.00 Forks<br>Quantity: </label>
+			<input type="number" id="numFork"><br><br>
+			<label for="numNote">$2.50 Sticky Notes<br>Quantity: </label>
+			<input type="number" id="numNote"><br><br>
+
+			<label for="username">Username: </label>
+			<input type="text" id="username" name="username"><br><br>
+			<label for="password">Password: </label>
+			<input type="text" id="password" name="password"><br>
+			
+			<p>Select Shipping Option</p>
+			<input type="radio" id="free" name="shipping" value="0">
+			<lable for="free">Free Seven Day Shipping: 0.00</lable><br>
+			<input type="radio" id="overnight" name="shipping" value="50">
+			<lable for="overnight">Overnight Shipping: $50.00</lable><br>
+			<input type="radio" id="3day" name="shipping" value="5">
+			<lable for="3day">Three Day Shipping: $5.00</lable><br>
+
+			<button id="reset">Reset</button><br>
+			<br><input type="submit">
+		</form>
+		
+		
+	</body>
+</html>
