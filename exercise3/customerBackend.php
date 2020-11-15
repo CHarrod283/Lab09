@@ -1,5 +1,8 @@
 <?php
-
+echo "<html>";
+echo "<head>";
+echo "<link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\"/>";
+echo "</head>";
 echo "<b>Welcome " . $_POST["username"] . " </b><br>";
 
 echo "Your password was: " . $_POST["password"] . "<br>";
@@ -30,6 +33,7 @@ echo "</td>";
 echo "</tr>";
 echo "</table>";
 
+echo "</html>";
 function totalCost(){
 	$tc = 0;
 	if($_POST["shipping"] == "Three Day"){
