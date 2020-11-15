@@ -1,0 +1,28 @@
+p.title
+{
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 30px;
+}
+
+head
+{
+    color: #cd93f3;
+    background-color: #09000f;
+}
+body
+{
+    color: #cd93f3;
+    background-color: #09000f;
+}
+
+th
+{
+    background-color: #9eddfd;
+    color: #000000
+}
+
+td
+{
+    background-color: #b7fff3;
+    color: #000000
+}
