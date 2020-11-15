@@ -1,46 +1,27 @@
 function validate(){
-    var numBlanket = document.getElementById("numBlanket");
-    var numFork = document.getElementById("numFork");
-    var numNote = document.getElementById("numNote");
+	//so because I used email input, I dont need this file, but 
+	//heres a rudementary check of how I would get the substrings of the email for validation
+    var username = document.getElementById("username").value;
+    var topLevelDomain = username.substring(username.lastIndexOf("."), username.length);
+    var domain = username.substring(username.lastIndexOf("@"), username.lastIndexOf(".") - 1);
+    var uname = username.substring(0, username.lastIndexOf("@");
 
-    var username = document.getElementById("username");
-    var password = document.getElementById("pasword");
-
-    var shipping = document.getElementsByName("shipping");
-
-    if (numBlanket.value > 10 || numBlanket.value < 0){
+    if(domain == "@"){
+	return errorForm();
+    }
+    if (topLevelDomain == "."){
         return errorForm();
     }
-    if (numFork.value > 10 || numFork.value < 0){
-        return errorForm();
-    }
-    if (numNote.value > 10 || numNote.value < 0){
-        return errorForm();
+    if (uname == ""){
+	return errorForm();
     }
 
-    if (username.value == ""){
-        return errorForm();
-    }
-    if (password.value == ""){
-        return errorForm();
-    }
-
-    var optionSelected = false;
-    for(var i = 0; i < shipping.length; i++){
-        if(shipping[i].checked){
-            optionSelected = true;
-        }
-    }
-    if(!optionSelected){
-        return errorForm();
-    }
-
-    alert("Validations successful!");
     return true;
 }
 
 function errorForm(){
-    alert("Oops! Validation failed!");
-    returnToPreviousPage();
+    alert("Invalid Email");
+    window.history.back();
     return false;
 }
+

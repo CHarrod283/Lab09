@@ -1,43 +1,79 @@
 <?php
 
-$score = 0;
+echo "<b>Welcome " . $_POST["username"] . " </b><br>";
 
-echo "<br><p>Question 1: What is the best number?</p>";
-echo "You answered: " . $_POST["bestNumber"] . "<br>";
-echo "Correct answer: 283";
-if($_POST["bestNumber"] == 283){
-	$score += 20;
+echo "Your password was: " . $_POST["password"] . "<br>";
+
+echo "<table style=\"width:500\">";
+echo "<tr>";
+echo "<th></th> <th>Quantity</th> <th>Cost Per Item</th> <th>Sub Total</th>";
+echo "</tr>";
+echo "<tr>";
+addRow("numBlanket");
+echo "</tr><tr>";
+addRow("numFork");
+echo "</tr><tr>";
+addRow("numNote");
+echo "</tr>";
+
+echo "<tr>";
+echo "<th>Shipping</th>";
+echo "<td colspan=\"2\">" . $_POST["shipping"] . "</td>";
+echo "<td>$";
+shippingSum();
+echo "</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<th colspan=\"3\"> Total Cost</th> <td>$";
+totalCost();
+echo "</td>";
+echo "</tr>";
+echo "</table>";
+
+function totalCost(){
+	$tc = 0;
+	if($_POST["shipping"] == "Three Day"){
+		$tc += 5;
+	} else if($_POST["shipping"] == "Express Overnight"){
+		$tc += 50;
+	}
+	$tc += 5 * $_POST["numBlanket"];
+	$tc += 2 * $_POST["numFork"];
+	$tc += 2.5 * $_POST["numNote"];
+	echo "$tc";
 }
 
-echo "<br><p>Question 2: Which is a fruit?</p>";
-echo "You answered: " . $_POST["fruit"] . "<br>";
-echo "Correct answer: apple";
-if($_POST["fruit"] == "apple"){
-	$score += 20;
+function shippingSum(){
+	if($_POST["shipping"] == "Free"){
+		echo "0";
+	}	
+	if($_POST["shipping"] == "Three Day"){
+		echo "5";
+	}
+	if($_POST["shipping"] == "Express Overnight"){
+		echo "50";
+	}
 }
 
-echo "<br><p>Question 2: Which is a bird?</p>";
-echo "You answered: " . $_POST["bird"] . "<br>";
-echo "Correct answer: bluebird";
-if($_POST["bird"] == "bluebird"){
-	$score += 20;
+function addRow($str){
+	if($str == "numBlanket"){
+		echo "<th>Blanket(s)</th>";
+		echo "<td>" . $_POST[$str] . "</td>";
+		echo "<td>$5.00</td>";
+		echo "<td>$" . 5 * $_POST[$str] . "</td>";
+	}
+	if($str == "numFork"){
+		echo "<th>Fork(s)</th>";
+		echo "<td>" . $_POST[$str] . "</td>";
+		echo "<td>$2.00</td>";
+		echo "<td>$" . 2 * $_POST[$str] . "</td>";
+	}
+	if($str == "numNote"){
+		echo "<th>Sticky Note(s)</th>";
+		echo "<td>" . $_POST[$str] . "</td>";
+		echo "<td>$2.50</td>";
+		echo "<td>$" . 2.5 * $_POST[$str] . "</td>";
+	}
 }
-
-echo "<br><p>Question 2: Which is an insect?</p>";
-echo "You answered: " . $_POST["insect"] . "<br>";
-echo "Correct answer: ant";
-if($_POST["insect"] == "ant"){
-	$score += 20;
-}
-
-echo "<br><p>Question 2: Which is a food?</p>";
-echo "You answered: " . $_POST["food"] . "<br>";
-echo "Correct answer: pizza";
-if($_POST["food"] == "pizza"){
-	$score += 20;
-}
-
-echo "<p>You got a $score% on the quiz, or " . $score / 20 . "/5 answers correct.</p>";
-
 
 ?>
